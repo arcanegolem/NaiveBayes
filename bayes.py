@@ -16,7 +16,7 @@ class NaiveBayes:
 
         ''' Данные из таблицы '''
         self.initial_data    = initial[:,0:-1:]
-        
+
         self.class_probability_dict = dict.fromkeys(np.unique(self.initial_classes), 1)
         self.class_frequency = np.array([])
 
@@ -47,7 +47,7 @@ class NaiveBayes:
             for class_v, class_idx in zip(self.class_probability_dict, range(len(self.class_probability_dict.keys()))):
                 
                 ''' Нахождение полей с совпадением с исходыми данными '''
-                data_match = np.where(self.initial_data[:, val_idx] == to_classify[val_idx])[0]
+                data_match  = np.where(self.initial_data[:, val_idx] == to_classify[val_idx])[0]
                 class_match = np.where(self.initial_classes == class_v)[0]
 
                 ''' Частота встречи конкретного значения с конкретными классом '''
