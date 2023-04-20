@@ -9,6 +9,7 @@ class NaiveBayes:
         '''
         Инициализация наивного Баесовского классификатора
         '''
+        
         initial = initial.values
         
         ''' Классы из таблицы '''
@@ -58,8 +59,10 @@ class NaiveBayes:
         for class_v, class_idx in zip(self.class_probability_dict, range(len(self.class_probability_dict.keys()))):
             self.class_probability_dict[class_v] *= self.class_frequency[class_idx] / len(self.initial_classes)
         
+        prob_sum = sum(self.class_probability_dict.values())
+
         ''' Нормализация '''
         for class_v in self.class_probability_dict:
-            self.class_probability_dict[class_v] = self.class_probability_dict[class_v] / sum(self.class_probability_dict.values())
+            self.class_probability_dict[class_v] = self.class_probability_dict[class_v] / prob_sum
 
         return self.class_probability_dict
